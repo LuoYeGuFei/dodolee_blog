@@ -1,0 +1,2 @@
+class PersonalCategory < ApplicationRecord
+end

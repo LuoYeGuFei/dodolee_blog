@@ -34,6 +34,10 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
 gem 'sorcery'
+gem 'simple_form'
+gem 'will_paginate'
+# markdown
+gem 'redcarpet'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

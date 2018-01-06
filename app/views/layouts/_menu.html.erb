@@ -24,7 +24,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "关于", "#" %></li>
-        <li><%= link_to "文章", "#" %></li>
+        <li><%= link_to "文章", articles_path %></li>
         <% unless logged_in? %>
           <li><a href="<%= new_user_path %>">注册</a></li>
           <li><a href="<%= new_session_path %>">登录</a></li>
@@ -34,6 +34,7 @@
             <ul class="dropdown-menu">
               <li><a href="#">设置</a></li>
               <li><a href="#">个人信息</a></li>
+              <li><%= link_to "写文章", new_article_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to "退出", logout_path, method: :delete %></li>
             </ul>
