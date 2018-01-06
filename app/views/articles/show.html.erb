@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <%= content_tag :h1, content_tag(:span, @article.title)%>
+  </div>
+  <div class="post-body">
+    <%= simple_format(@article.content_html) %>
+  </div>
+  <div class="row pull-right">
+    <%= link_to "编辑", edit_article_path(@article) %>
+    <%= link_to "赞", "#" %>
+    <%= link_to "评论", "#" %>
+  </div>
+  <div id="comments_list"></div>
+</div>
+
+<%= content_for :javascripts do %>
+  <script>
+    $.get('/comments', function(data){
+      $('#comments_list').html(data);
+    })
+  </script>
+<% end %>

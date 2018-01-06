@@ -1,0 +1,21 @@
+<h2>文章列表</h2>
+<div>
+  <table class="table table-hover">
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.category.try(:name) %></td>
+          <td><%= link_to article.title, article_path(article.id) %> <%= article.updated_at.to_date %></td>
+          <td>阅读 <%= article.view_count%></td>
+          <td>评论 0</td>
+          <td>
+            <%= link_to "编辑", edit_article_path(article) %>
+            <%= link_to "删除", article_path(article), method: :delete, 'data-confirm': "确定要删除吗？" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= will_paginate @articles %>
+</div>
