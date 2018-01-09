@@ -7,5 +7,6 @@ Rails.application.routes.draw do
 
   resources :articles do
     post :preview, on: :collection
+    resources :comments
   end
 end
