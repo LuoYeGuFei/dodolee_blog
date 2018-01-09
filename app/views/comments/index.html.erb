@@ -1,0 +1,14 @@
+<div class="clearfix"></div>
+<br />
+
+<ul class="list-group">
+  <% @comments.each do |comment| %>
+    <li class="list-group-item">
+      <label>
+        <%= simple_format(comment.content_html) %>
+
+        <%= link_to "删除", article_comment_path(comment.article, comment), method: 'delete', "data-confirm": "确认删除该评论吗？", class: "remove-address-btn inline" %>
+      </label>
+    </li>
+  <% end %>
+</ul>

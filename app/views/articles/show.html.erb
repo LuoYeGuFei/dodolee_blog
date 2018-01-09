@@ -1,4 +1,5 @@
 <div class="container-fluid">
+  <input type="hidden" id="article_area" value="<%= @article.id %>" />
   <div class="text-center">
     <%= content_tag :h1, content_tag(:span, @article.title)%>
   </div>
@@ -10,13 +11,58 @@
     <%= link_to "赞", "#" %>
     <%= link_to "评论", "#" %>
   </div>
-  <div id="comments_list"></div>
+  <div id="comments_list">
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="col-md-10 col-lg-10">
+    <%= simple_form_for([@article,@article.comments.build]) do |f| %>
+      <div class="form-group">
+        <ul class="nav nav-tabs" id="edit-tabs">
+          <%= content_tag :li, link_to("编辑", '#edit_content', class: "edit-body-node edit-node", 'data-toggle': 'tab'), class: 'active' %>
+          <%= content_tag :li, link_to("预览", '#preview_content', class: "eidt-body-node preview-node", 'data-toggle': 'tab') %>
+        </ul>
+      </div>
+
+      <div class="form-group", id="edit-form">
+        <%= f.input :content, as: :text, label: false, input_html: { rows: 8, class: "form-control"} %>
+      </div>
+      <div class="form-group", id="preview-form"></div>
+
+      <div class="form-froup pull-right">
+        <%= f.button :submit, "保存", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
 <%= content_for :javascripts do %>
   <script>
-    $.get('/comments', function(data){
+    var article_id = $("#article_area").val();
+    var url = "/articles/" + article_id + "/comments";
+    $.get(url, function(data){
       $('#comments_list').html(data);
+    })
+
+    $('.btn').click(function(){
+
+      $.ajax({
+        url: url + ".js",
+        method: 'post',
+        data: { content: $("#comment_content").val() },
+        success: function(data) {
+          $("#comment_content").val("");
+          $("#edit-form").show();
+          $("#preview-form").hide();
+          $("#comments_list").html(data.data);
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+          alert("评论失败！请检查日志！");
+        }
+      });
+
+      return false;
     })
   </script>
 <% end %>
