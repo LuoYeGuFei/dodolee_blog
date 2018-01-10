@@ -56,6 +56,12 @@ class ArticlesController < ApplicationController
     render html: content
   end
 
+  def search
+    @articles = Article.search(params[:key], fields: [:title], page: params[:page], per_page: 10)
+
+    render file: 'welcome/index'
+  end
+
   private
   def find_article
     @article = Article.find(params[:id])

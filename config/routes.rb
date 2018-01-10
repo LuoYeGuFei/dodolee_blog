@@ -4,9 +4,14 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   delete "/logout" =>  "sessions#destroy", as: :logout
+  get 'about', to: 'welcome#about'
+  get 'download', to: 'welcome#download_resume'
 
   resources :articles do
+    get :search, on: :collection
     post :preview, on: :collection
     resources :comments
   end
+
+  resources :resumes, only: [:edit, :update]
 end

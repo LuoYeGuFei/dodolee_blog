@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       .permit(:email, :password, :password_confirmation))
 
     if @user.save
+      Resume.create!(user_id: @user.id, title: "#{@user.username}的简历", content: "内容" )
       flash[:notice] = "注册成功，请登录"
       redirect_to new_session_path
     else

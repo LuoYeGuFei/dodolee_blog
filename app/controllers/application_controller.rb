@@ -11,11 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def markdown content
-    renderer = Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true)
-    markdown = Redcarpet::Markdown.new(renderer, 
-                                       fenced_code_blocks: true,
-                                       autolink: true,
-                                       tables: true)
+    renderer = Redcarpet::Render::HTML.new(hard_wrap: true)
+    markdown = Redcarpet::Markdown.new(
+      renderer,
+      fenced_code_blocks: true,
+      autolink: true,
+      tables: true)
     markdown.render(content).html_safe
   end
 
