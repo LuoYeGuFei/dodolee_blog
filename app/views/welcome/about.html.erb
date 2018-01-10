@@ -1,0 +1,8 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <%= content_tag :h1, content_tag(:span, @resume.title) %>
+  </div>
+  <div class="post-body">
+    <%= simple_format @resume.content_html %>
+  </div>
+</div>
