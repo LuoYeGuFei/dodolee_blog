@@ -6,11 +6,11 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    @resume = current_user.resume
+    @resume = User.first.resume
   end
 
   def download_resume
-    @resume = current_user.resume
+    @resume = User.first.resume
     content = @resume.content_html.nil? ? @resume.content : @resume.content_html
     kit = PDFKit.new(content, page_size: 'Letter')
     pdf = kit.to_pdf
