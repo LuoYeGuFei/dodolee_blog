@@ -14,7 +14,7 @@ class WelcomeController < ApplicationController
     content = @resume.content_html.nil? ? @resume.content : @resume.content_html
     kit = PDFKit.new(content, page_size: 'Letter')
     pdf = kit.to_pdf
-    file_name = "#{current_user.username}的个人简历.pdf"
+    file_name = "李亚中的个人简历.pdf"
     send_data(pdf, filename: file_name)
   end
 
