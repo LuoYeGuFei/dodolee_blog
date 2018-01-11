@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: dodolee_blog_prod
-  username: dodolee_blog
+  username: root
   password: <%= ENV['DODOLEE_BLOG_DATABASE_PASSWORD'] %>
