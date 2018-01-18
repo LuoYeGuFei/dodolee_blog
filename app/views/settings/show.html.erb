@@ -1,0 +1,29 @@
+<div class="row">
+  <%= render 'menu' %>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for(@user, url: setting_path, html: { method: :put, enctype: "multipart/form-data"}) do |f| %>
+          <div class="row">
+            <div class="col-sm-9">
+              <%= f.input :name, input_html: {style: 'width: 300px'} %>
+              <%= f.input :email, input: {disable: true} %>
+              <%= f.input :avatar %>
+              <%= f.input :introduction, as: :text, input_html: { rows: 6 } %>
+            </div>
+
+            <div class="col-sm-3">
+              <div class="form-group avatar-preview" style="text-align: center;">
+                <%= avatar_tag(@user) %>
+              </div>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">更新资料</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

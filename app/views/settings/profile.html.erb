@@ -1,0 +1,31 @@
+<div class="row">
+  <%= render "menu" %>
+
+  <div class="col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= simple_form_for(@user, url: setting_path, html: { method: :put, enctype:  "multipart/form-data" }) do |f| %>
+          <input type="hidden" name="edit_path" value="profile" />
+          <%= f.input :city %>
+          <%= f.input :company %>
+          <div class="form-group">
+            <%= f.label :github, class: "control-label" %>
+            <div class="input-group">
+              <span class="input-group-addon">https://github.com/</span>
+              <%= f.text_field :github, class: "form-control", placeholder: "账号名称" %>
+            </div>
+          </div>
+
+          <%= f.input :homepage, type: :url, input_html: { placeholder: "http://"} %>
+          <%= f.input :alipay %>
+          <%= f.input :wechat %>
+          <%= f.input :signature %>
+
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">更新资料</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

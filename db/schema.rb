@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180109140358) do
+ActiveRecord::Schema.define(version: 20180118090311) do
 
   create_table "article_tag_ships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "article_id"
@@ -94,6 +94,17 @@ ActiveRecord::Schema.define(version: 20180109140358) do
     t.string "activation_state"
     t.string "activation_token"
     t.datetime "activation_token_expires_at"
+    t.boolean "is_admin", default: false
+    t.string "introduction"
+    t.string "cellphone"
+    t.string "city"
+    t.string "company"
+    t.string "homepage"
+    t.string "github"
+    t.string "alipay"
+    t.string "wechat"
+    t.string "signature"
+    t.string "avatar"
     t.index ["activation_token"], name: "index_users_on_activation_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
