@@ -42,8 +42,12 @@ gem 'redcarpet'
 gem 'searchkick'
 gem 'prawn'
 
+# html 转 pdf
 gem 'pdfkit'
 gem 'wkhtmltopdf-binary'
+
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

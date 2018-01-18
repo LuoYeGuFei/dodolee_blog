@@ -14,4 +14,24 @@ Rails.application.routes.draw do
   end
 
   resources :resumes, only: [:edit, :update]
+
+  # 用户相关信息路由跟在用户名之后
+  #constraints(id: User::USERNAME_FORMAT) do
+    #resources :users, path: '', as: 'users' do
+      #member do
+        #get :articles
+        #get :comments
+      #end
+    #end
+
+  #end
+
+  # 设置
+  resource :setting do
+    member do
+      get :profile
+      get :reward
+      get :password
+    end
+  end
 end
