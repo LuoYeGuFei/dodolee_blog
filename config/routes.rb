@@ -34,4 +34,10 @@ Rails.application.routes.draw do
       get :password
     end
   end
+
+  # 后台管理
+  namespace :admin do
+    root 'sessions#new'
+    resources :sessions
+  end
 end
